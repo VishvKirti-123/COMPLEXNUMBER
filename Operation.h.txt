@@ -1,0 +1,43 @@
+#ifndef OPERATION_H
+#define OPERATION_H
+#include "complex.h"
+
+template<class T>
+class Operation{
+public:
+    virtual Complex<T> apply(Complex<T>&a,Complex<T>&b)=0;
+};
+
+template<class T>
+class Add:public Operation<T>{
+public:
+    Complex<T> apply(Complex<T>&a,Complex<T>&b){
+        return a.add(b);
+    }
+};
+
+template<class T>
+class Sub:public Operation<T>{
+public:
+    Complex<T> apply(Complex<T>&a,Complex<T>&b){
+        return a.sub(b);
+    }
+};
+
+template<class T>
+class Mul:public Operation<T>{
+public:
+    Complex<T> apply(Complex<T>&a,Complex<T>&b){
+        return a.mul(b);
+    }
+};
+
+template<class T>
+class Div:public Operation<T>{
+public:
+    Complex<T> apply(Complex<T>&a,Complex<T>&b){
+        return a.div(b);
+    }
+};
+
+#endif

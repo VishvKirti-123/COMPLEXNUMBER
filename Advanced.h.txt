@@ -1,0 +1,26 @@
+#ifndef ADVANCED_H
+#define ADVANCED_H
+#include "complex.h"
+#include <cmath>
+
+template<class T>
+class Advanced{
+public:
+    static T magnitude(Complex<T> c){
+        return sqrt(c.real()*c.real()+c.imag()*c.imag());
+    }
+
+    static Complex<T> conjugate(Complex<T> c){
+        return Complex<T>(c.real(),-c.imag());
+    }
+
+    static Complex<T> square(Complex<T> c){
+        return c.mul(c);
+    }
+
+    static Complex<T> cube(Complex<T> c){
+        return c.mul(c).mul(c);
+    }
+};
+
+#endif

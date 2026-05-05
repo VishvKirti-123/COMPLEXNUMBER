@@ -1,0 +1,36 @@
+#ifndef COMPLEX_H
+#define COMPLEX_H
+#include <iostream>
+using namespace std;
+
+template<class T>
+class Complex {
+    T r, i;
+public:
+    Complex():r(0),i(0){}
+    Complex(T a,T b):r(a),i(b){}
+
+    void input(){
+        cout<<"Real: "; cin>>r;
+        cout<<"Imag: "; cin>>i;
+    }
+
+    void show() const{
+        cout<<r<<(i>=0?" + ":" - ")<<(i>=0?i:-i)<<"i";
+    }
+
+    T real() const { return r; }
+    T imag() const { return i; }
+
+    Complex add(const Complex &c){ return Complex(r+c.r,i+c.i); }
+    Complex sub(const Complex &c){ return Complex(r-c.r,i-c.i); }
+    Complex mul(const Complex &c){ return Complex(r*c.r-i*c.i,r*c.i+i*c.r); }
+
+    Complex div(const Complex &c){
+        T d = c.r*c.r + c.i*c.i;
+        if(d==0) throw "Divide by zero";
+        return Complex((r*c.r+i*c.i)/d,(i*c.r-r*c.i)/d);
+    }
+};
+
+#endif
