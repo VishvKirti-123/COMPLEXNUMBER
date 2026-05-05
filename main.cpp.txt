@@ -1,0 +1,23 @@
+#include <iostream>
+#include "calculator.h"
+using namespace std;
+
+int main(){
+    Calculator<double> calc;
+    int ch;
+
+    while(true){
+        cout<<"\n1 Add\n2 Sub\n3 Mul\n4 Div\n5 Magnitude\n6 Conjugate\n7 Exit\n";
+        cin>>ch;
+
+        try{
+            if(ch==7) break;
+            calc.perform(ch);
+        }
+        catch(const char* msg){
+            cout<<"Error: "<<msg<<endl;
+        }
+    }
+
+    return 0;
+}
