@@ -1,0 +1,24 @@
+#ifndef HISTORY_H
+#define HISTORY_H
+#include <iostream>
+using namespace std;
+
+template<class T>
+class History{
+    T arr[100];
+    int n;
+public:
+    History(){ n=0; }
+
+    void add(T val){
+        if(n<100) arr[n++]=val;
+    }
+
+    void show(){
+        for(int i=0;i<n;i++){
+            cout<<arr[i]<<endl;
+        }
+    }
+};
+
+#endif
