@@ -1,0 +1,56 @@
+#ifndef CALCULATOR_H
+#define CALCULATOR_H
+#include "operation.h"
+#include "advanced.h"
+#include "history.h"
+#include "filemanager.h"
+
+template<class T>
+class Calculator{
+    History<string> h;
+    FileManager f;
+
+public:
+    void perform(int ch){
+        Complex<T> a,b,res;
+
+        if(ch>=1 && ch<=4){
+            a.input();
+            b.input();
+        }
+
+        if(ch==1){
+            Add<T> op;
+            res = op.apply(a,b);
+            res.show();
+        }
+        else if(ch==2){
+            Sub<T> op;
+            res = op.apply(a,b);
+            res.show();
+        }
+        else if(ch==3){
+            Mul<T> op;
+            res = op.apply(a,b);
+            res.show();
+        }
+        else if(ch==4){
+            Div<T> op;
+            res = op.apply(a,b);
+            res.show();
+        }
+        else if(ch==5){
+            a.input();
+            cout<<Advanced<T>::magnitude(a);
+        }
+        else if(ch==6){
+            a.input();
+            res = Advanced<T>::conjugate(a);
+            res.show();
+        }
+
+        cout<<endl;
+    }
+};
+
+#endif
